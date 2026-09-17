@@ -97,9 +97,9 @@ so I decided to pursue it.
       
 1. Clone the repo
 2. Install the dependencies
-    \```
+    ```
     pip install -r requirements.txt
-    \```
+    ```
 3. create the .env file with your:
     - DB_PASSWORD=your database password
     - JWT_KEY= you JWT secret key
