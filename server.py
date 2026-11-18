@@ -11,7 +11,7 @@ clients=[]
 client_names={}
 clients_lock=threading.Lock()
 # Address = socket.getaddrinfo(host=socket.gethostname(), port=8000, family=socket.AF_UNSPEC, type=socket.SOCK_STREAM, proto=0)
-Address = socket.getaddrinfo('localhost', port=8000, family=socket.AF_UNSPEC, type=socket.SOCK_STREAM, proto=0)
+Address = socket.getaddrinfo('0.0.0.0', port=8000, family=socket.AF_UNSPEC, type=socket.SOCK_STREAM, proto=0)
 print(Address)
 for family, type, proto, host, sock_addr  in Address:
     print(family, type, proto)
@@ -19,7 +19,7 @@ for family, type, proto, host, sock_addr  in Address:
     print(socket.gethostname())
     try:
         sock= socket.socket(int(family), int(type))
-        bind=sock.bind(('localhost', 8000))
+        bind=sock.bind(('0.0.0.0', 8000))
         # connect=sock.connect(sock_addr) This should not be used in server it is used when client has to be connected to server socket.
         listen=sock.listen(5)
 

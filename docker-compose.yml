@@ -1,0 +1,19 @@
+
+
+services:
+    web:
+      build: .
+      ports:
+        - "8000:8000"
+      environment:
+        DB_PASSWORD: ${DB_PASSWORD}
+        JWT_KEY: ${JWT_KEY}
+
+    db:
+      image: postgres
+      ports:
+        - "5432:5432"
+      environment:
+        POSTGRES_PASSWORD: ${DB_PASSWORD}
+        POSTGRES_DB: Database_for_ChatApp
+        POSTGRES_USER: postgres
