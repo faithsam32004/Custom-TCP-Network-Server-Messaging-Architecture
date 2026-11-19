@@ -1,4 +1,5 @@
 # Custom TCP Network Server & Messaging Architecture
+[![Github Actions for ChatApp](https://github.com/faithsam32004/Custom-TCP-Network-Server-Messaging-Architecture/actions/workflows/ci.yml/badge.svg)](https://github.com/faithsam32004/Custom-TCP-Network-Server-Messaging-Architecture/actions/workflows/ci.yml)
 
 
 This is basically a custom made chat room with its own server, http server and parser along with the WebSocket framework. It's entirely built with python. It allows you to have real time chat with the people.
