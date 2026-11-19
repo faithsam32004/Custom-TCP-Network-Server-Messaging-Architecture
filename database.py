@@ -8,9 +8,11 @@ load_dotenv()
 
 def connect():
     connection=psycopg2.connect(
-        host="localhost",
+        host="chatapp-db.cgryuk6swrq1.us-east-1.rds.amazonaws.com",
         port=5432,
-        database="Database for ChatApp",
+        database="postgres",  # I had to change this name and put underscores because it has to made an environment variable for db container to access it and 
+                                          # this double quotes cant be used there. 
+                                          # Database_for_ChatApp i changed it later to connect it when rds initiates an database.
         user="postgres",
         password=os.getenv('DB_PASSWORD')
     )
@@ -21,7 +23,8 @@ def connect():
 def create(connection):
     cur=connection.cursor()
 
-    cur.execute("CREATE TABLE chatapp(id SERIAL PRIMARY KEY, username varchar, password BYTEA);")
+    cur.execute("CREATE TABLE IF NOT EXISTS chatapp(id SERIAL PRIMARY KEY, username varchar, password BYTEA);")
+    ## I added the IF NOT EXISTS after the docker so that i can call the create function every time.
 
     connection.commit()
 

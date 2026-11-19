@@ -4,7 +4,7 @@ function chatLogic(){
     const button=document.getElementById('send_button')
     
     finalized_token=localStorage.getItem('token')
-    const socket=new WebSocket(`ws://localhost:8000?token=${finalized_token}`)
+    const socket=new WebSocket(`ws://${location.host}?token=${finalized_token}`)
 
     button.addEventListener("click", function(){
 

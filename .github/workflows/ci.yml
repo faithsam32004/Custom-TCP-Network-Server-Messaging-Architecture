@@ -1,0 +1,34 @@
+
+
+
+
+name: Github Actions for ChatApp
+run-name: ${{github.actor}} is testing out Github Actions.
+on: [push]
+jobs:
+  Explore-Github-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository code
+        uses: actions/checkout@v6
+      - name: docker build
+        run: docker build -t chatapp:ci .
+
+      - name: docker run
+        run: docker run -d --name chatapp-ci -p 8000:8000 chatapp:ci
+
+      - name: wait for app
+        run: |
+          for i in {1..15}; do 
+            if echo > /dev/tcp/127.0.0.1/8000; then
+              echo "worked"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "app never started"
+          exit 1
+
+      - name: docker logs
+        if: always()
+        run: docker logs chatapp-ci

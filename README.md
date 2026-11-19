@@ -1,4 +1,5 @@
 # Custom TCP Network Server & Messaging Architecture
+[![Github Actions for ChatApp](https://github.com/faithsam32004/Custom-TCP-Network-Server-Messaging-Architecture/actions/workflows/ci.yml/badge.svg)](https://github.com/faithsam32004/Custom-TCP-Network-Server-Messaging-Architecture/actions/workflows/ci.yml)
 
 
 This is basically a custom made chat room with its own server, http server and parser along with the WebSocket framework. It's entirely built with python. It allows you to have real time chat with the people.
@@ -149,3 +150,17 @@ so I decided to pursue it.
 - Feature to support private messaging.
 - Implementing cookies instead of localstorage.
 - Deploy on AWS using docker
+ 
+
+
+## CI
+
+Every push to the repository triggers a GitHub Actions workflow (`.github/workflows/ci.yml`) that:
+
+1. Builds the Docker image from the `Dockerfile`
+2. Starts the container
+3. Waits for the server to start listening on port 8000, and fails if it doesn't
+
+This catches a broken Dockerfile, a bad dependency or a startup crash before the code is merged or deployed. The badge at the top shows the status of the latest run.
+
+ 

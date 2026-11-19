@@ -1,0 +1,51 @@
+{
+    "family": "fargate",
+    "networkMode": "awsvpc",
+    "executionRoleArn":"arn:aws:iam::801132668497:role/ecsWorkingRole",
+    "containerDefinitions": [
+        {
+            "name": "fargate-app",
+            "image": "801132668497.dkr.ecr.us-east-1.amazonaws.com/chatapp:latest",
+            "portMappings": [
+                {
+                    "containerPort": 8000,
+                    "hostPort": 8000,
+                    "protocol": "tcp"
+                    
+                }
+            ],
+
+            "logConfiguration":{
+                    "logDriver":"awslogs",
+                    "options": {
+                        "awslogs-group": "/ecs/chatapp",
+                        "awslogs-region": "us-east-1",
+                        "awslogs-stream-prefix": "ecs"
+                  }
+            },
+
+            "environment":[
+                {
+                    "name": "DB_PASSWORD",
+                    "value": "faith2004test"
+                    
+                },
+
+                {
+                    "name": "JWT_KEY",
+                    "value": "4a2b6e8f1c9d3e5a7b0f2e4d6c8b0a1f3e5d7c9b1a3f5e7d9c1b3a5f7e9d1c3b"
+                }
+            ]
+        }
+
+    ],
+
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+
+    
+
+    "cpu": "256",
+    "memory": "512"
+}

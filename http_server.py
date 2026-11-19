@@ -1,4 +1,4 @@
-from database import insert, find, connect
+from database import insert, find, connect, create
 from authorisation import token, Hasher
 import json
 
@@ -40,6 +40,7 @@ def caller(input):
     # and close that when the server closes. Each server thread has its own connection but the issue with that is it will not well threads. !!!!!\
     
     connection=connect()
+    create(connection)
     if input['path']=="/login" and input['method']=='GET':
 
         #body="<html><body><h1>Welcome!</h1></body></html>"
